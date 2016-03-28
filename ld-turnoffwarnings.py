@@ -12,6 +12,8 @@ def main(argv):
         doc = parse(file)
         for node in doc.getElementsByTagName('TreatWarningAsError'):
             node.firstChild.replaceWholeText('false')
+	for node in doc.getElementsByTagName('DisableSpecificWarnings'):
+            node.firstChild.insertData(0, '4251;')
         doc.writexml(open(file, 'w'))
 
 if __name__ == '__main__':
