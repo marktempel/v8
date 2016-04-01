@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="DesktopBuild" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\TeamBuild\Microsoft.TeamFoundation.Build.targets" />
+
+	<PropertyGroup>
+		<Win32SolutionToBuild>v8\ld\win32\v8.sln</Win32SolutionToBuild>
+		<X64SolutionToBuild>v8\ld\x64\v8.sln</X64SolutionToBuild>
+	</PropertyGroup>
+
+	<Target Name="Build">
+			<MSBuild Projects="$(Win32SolutionToBuild)" Properties="Configuration=Debug;Platform=Win32"/>
+			<MSBuild Projects="$(Win32SolutionToBuild)" Properties="Configuration=Debug_rtlstatic;Platform=Win32"/>
+			<MSBuild Projects="$(Win32SolutionToBuild)" Properties="Configuration=Release;Platform=Win32"/>
+			<MSBuild Projects="$(Win32SolutionToBuild)" Properties="Configuration=Release_rtlstatic;Platform=Win32"/>
+
+			<MSBuild Projects="$(X64SolutionToBuild)" Properties="Configuration=Debug;Platform=x64"/>
+			<MSBuild Projects="$(X64SolutionToBuild)" Properties="Configuration=Debug_rtlstatic;Platform=x64"/>
+			<MSBuild Projects="$(X64SolutionToBuild)" Properties="Configuration=Release;Platform=x64"/>
+			<MSBuild Projects="$(X64SolutionToBuild)" Properties="Configuration=Release_rtlstatic;Platform=x64"/>
+	</Target>
+</Project>
